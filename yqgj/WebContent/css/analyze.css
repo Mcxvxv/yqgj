@@ -1,0 +1,90 @@
+.layui-tab-item {
+	width: 100%;
+	height: 600px;
+}
+
+.yuqing_zoushi_chart {
+	margin: auto;
+	width: 1200px;
+	height: 500px;
+	margin-top: 25px;
+}
+
+.huoyue_meiti_chart {
+	margin: auto;
+	width: 1200px;
+	height: 500px;
+	margin-top: 25px;
+}
+
+.huoyue_bozhu_chart {
+	margin: auto;
+	width: 1200px;
+	height: 500px;
+	margin-top: 25px;
+}
+
+.meiti_laiyuan_chart {
+	width: 700px;
+	height: 500px;
+	margin-top: 25px;
+}
+
+.meiti_laiyuan_wrapper {
+	width: 100%;
+	height: 600px;
+	display: flex;
+	flex-direction: row;
+}
+
+.layui-table,
+.layui-table-view {
+	margin-top: 60px;
+	margin-left: 20px;
+}
+
+.ciyun_wrapper {
+	width: 100%;
+	height: 100%;
+	display: flex;
+	flex-direction: row;
+}
+
+.ciyun {
+	width: 800px;
+	height: 500px;
+}
+
+/* 
+.ciyun_table_wrapper{
+	width: fit-content;
+	margin-top: 30px;
+	margin-left: 100px;
+	height: 450px;
+	overflow: scroll;
+	/* overflow-x: hidden; */
+}
+
+*/
+
+/*定义滚动条轨道 内阴影+圆角*/
+.ciyun_table_wrapper::-webkit-scrollbar-track {
+	box-shadow: inset 0 0 0px rgba(240, 240, 240, .5);
+	border-radius: 20px;
+	background-color: white;
+}
+
+
+/* 定义滑块 内阴影+圆角 */
+.ciyun_table_wrapper::-webkit-scrollbar-thumb {
+	border-radius: 20px;
+	box-shadow: inset 0 0 0px rgba(240, 240, 240, .5);
+	background-color: lightblue;
+}
+
+/* 定义滚动条样式 */
+.ciyun_table_wrapper::-webkit-scrollbar {
+	width: 5px;
+	/* height: 300px; */
+	background-color: white;
+}

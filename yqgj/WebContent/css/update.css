@@ -1,0 +1,83 @@
+@charset "UTF-8";
+
+body {
+	background-color: #f7f7f7;
+}
+
+.header {
+	background-color: white;
+	width: 100%;
+	height: 60px;
+	display: flex;
+	flex-direction: row;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.input_title {
+	font-weight: bold;
+	font-size: 26px;
+	margin: auto;
+	margin-bottom: 10px;
+}
+
+.content {
+	width: 100%;
+	height: 500px;
+}
+
+.input_content {
+	width: 400px;
+	height: 250px;
+	margin: auto;
+	background-color: white;
+	margin-top: 100px;
+	padding-top: 10px;
+	padding-bottom: 30px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+}
+
+.layui-form-item {
+	width: 90%;
+	margin-bottom: 2px;
+}
+
+.input_content .layui-btn.layui-btn-normal {
+	width: 90%;
+	height: 45px;
+}
+
+.header .layui-btn.layui-btn-normal a {
+	color: white;
+}
+
+.footer {
+	width: 100%;
+	height: 100px;
+	background-color: #393D49;
+}
+
+.header_title {
+	font-size: 24px;
+	margin-left: 100px;
+}
+
+.header button {
+	margin-left: 10px;
+	margin-right: 100px;
+}
+
+.header a {
+	color: #00c1d1;
+}
+
+.tip {
+	margin-bottom: 5px;
+	font-size: 0.625rem;
+	padding-left: 2px;
+	color: red;
+	height: 13px;
+	margin-top: 2px;
+}

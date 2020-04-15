@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>新闻详情</title>
+		<link rel="stylesheet" href="css/news_detail.css">
+		<script type="text/javascript" src="js/jquery-3.4.1.min.js" charset="UTF-8"></script>
+		<script type="text/javascript" src="js/news_detail.js" charset="UTF-8"></script>
+		<script type="text/javascript" src="layui/layui.js" charset="utf-8"></script>
+		<script type="text/javascript" src="http://www.jq22.com/demo/clipboard.js-master201703170013/dist/clipboard.min.js"></script>
+	</head>
+	<body>
+
+		<div class="header">
+			<img src="img/images/banner_wh_new.jpg">
+		</div>
+		<div class="all_content">
+			<div class="left_content">
+				<div class="left_content_item">
+					<a href="javascript:;" id="suyuan" target='_blank'>
+						<img src="img/icon/suyuan.png" />
+						<span>一键溯源</span>
+					</a>
+				</div>
+				<div class="left_content_item">
+					<a href="javascript:;" id="copy_all">
+						<img src="img/icon/fuzhi.png" />
+						<span>复制信息</span>
+					</a>
+				</div>
+				<div class="left_content_item">
+					<a href="javascript:;">
+						<img src="img/icon/fenxiang.png" />
+						<span>分享</span>
+					</a>
+				</div>
+
+			</div>
+			<div class="right_content">
+			</div>
+		</div>
+		<div class="footer">
+
+		</div>
+		<script type="text/javascript">
+			layui.use(['layer', 'element'], function() {
+				var layer = layui.layer;
+				$(document).ready(function() {
+					init_news(layer);
+					
+				})
+			})
+			
+		</script>
+	</body>
+</html>

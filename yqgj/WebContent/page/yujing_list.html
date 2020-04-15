@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>专题预警</title>
+		<link rel="stylesheet" href="layui/css/layui.css">
+		<link rel="stylesheet" href="css/common.css">
+		<link rel="stylesheet" href="css/yujing_list.css">
+		<link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.css">
+		<link rel="stylesheet" href="css/mricode.pagination.css">
+		<script type="text/javascript" src="js/jquery-3.4.1.min.js" charset="UTF-8"></script>
+		<script type="text/javascript" src="layui/layui.js" charset="utf-8"></script>
+		<script type="text/javascript" src="js/mricode.pagination.js" charset="utf-8"></script>
+		<script type="text/javascript" src="js/cookie.js" charset="UTF-8"></script>
+		<script>
+			if (cookie.get("user_name") == null || cookie.get("user_name") == "") {
+				console.log("没有用户");
+				window.location.href = "index";
+			}
+		</script>
+	</head>
+	<body>
+		<div>
+			<div class="header">
+				<ul class="layui-nav" lay-filter="mainnav">
+					<li class="layui-nav-item">
+						<a href="home">首页</a>
+					</li>
+					<li class="layui-nav-item">
+						<a href="all">舆情总览</a>
+					</li>
+					<li class="layui-nav-item layui-this">
+						<a href="javascript:void(0)">专题预警</a>
+					</li>
+					<li class="layui-nav-item">
+						<a href="school">高校推送</a>
+					</li>
+					<li class="layui-nav-item">
+						<a href="concern">我的关注</a>
+					</li>
+					<li class="layui-nav-item">
+						<a href="analyze">统计分析</a>
+					</li>
+					<li class="layui-nav-item">
+						<a href="javascript:;"><img src="//t.cn/RCzsdCq" class="layui-nav-img"><span id="current_user">我</span></a>
+						<dl class="layui-nav-child">
+							<dd><a href="javascript:;" id="update_userinfo">修改信息</a></dd>
+							<dd><a href="javascript:;">安全管理</a></dd>
+							<dd><a href="javascript:;" id="login_out">退了</a></dd>
+						</dl>
+					</li>
+				</ul>
+			</div>
+			<div class="all_content">
+				<div class="yuqing_list_content_wrapper">
+					<div class="layui-nav-tree_wrapper">
+						<fieldset class="layui-elem-field layui-field-title">
+							<legend>专题列表</legend>
+						</fieldset>
+						<div class="layui-side-scroll">
+							<ul class="layui-nav layui-nav-tree" lay-filter="test">
+								<!-- 侧边导航: <ul class="layui-nav layui-nav-tree layui-nav-side"> -->
+								<li class="layui-nav-item layui-nav-itemed">
+									<a href="javascript:;">专题</a>
+									<dl class="layui-nav-child">
+										
+									</dl>
+								</li>
+							</ul>
+						</div>
+					</div>
+				
+					<div class="yuqing_list_content">
+				
+						<fieldset class="layui-elem-field layui-field-title">
+							<legend>新闻列表</legend>
+						</fieldset>
+						<div class="star_area">
+							<span class="gaoxiao_title">全部专题</span>
+							<div class="star_btn">
+								<button type="button" class="layui-btn layui-btn-warm layui-btn-sm" id="guanzhu" disabled="disabled"><i class="layui-icon layui-icon-ok"></i><span>关注</span></button>
+								<button type="button" class="layui-btn layui-btn-danger layui-btn-sm" id="quguan" disabled="disabled"><i class="layui-icon layui-icon-close"></i><span>取关</span></button>
+							</div>
+						</div>
+						<div class="select_area">
+							<div class="select_item">
+								<button type="button" class="layui-btn layui-btn-normal" expend="false"><span>自定义专题</span><i class="layui-icon layui-icon-layer"></i></button>
+							</div>
+							<div class="select_item" id="time_select">
+								<button type="button" class="layui-btn layui-btn-normal" expend="false"><span>时间</span><i class="layui-icon layui-icon-triangle-d"></i></button>
+								<ul class="select_ul">
+									<li><a href="javascript:;">全部时间</a></li>
+									<li><a href="javascript:;">当天</a></li>
+									<li><a href="javascript:;">近七天</a></li>
+									<li><a href="javascript:;">近一个月</a></li>
+								</ul>
+							</div>
+							<div class="select_item" id="emotion_select">
+								<button type="button" class="layui-btn layui-btn-normal" expend="false"><span>情感倾向</span><i class="layui-icon layui-icon-triangle-d"></i></button>
+								<ul class="select_ul">
+									<li><a href="javascript:;">全部情感</a></li>
+									<li><a href="javascript:;">正面</a></li>
+									<li><a href="javascript:;">中性</a></li>
+									<li><a href="javascript:;">负面</a></li>
+								</ul>
+							</div>
+							<div class="select_item" id="sort_select">
+								<button type="button" class="layui-btn layui-btn-normal" expend="false"><span>排序</span><i class="layui-icon layui-icon-triangle-d"></i></button>
+								<ul class="select_ul">
+									<li><a href="javascript:;">时间降序</a></li>
+									<li><a href="javascript:;">时间升序</a></li>
+								</ul>
+							</div>
+						</div>
+						<div class="layui-tab">
+							<ul class="layui-tab-title">
+							</ul>
+							<div class="layui-tab-content">
+				
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="footer">
+
+			</div>
+		</div>
+		<script type="text/javascript" src="js/yujing_list.js" charset="utf-8"></script>
+		<script>
+			layui.use(['layer', 'element'], function() {
+				var element = layui.element; //导航的hover效果、二级菜单等功能，需要依赖element模块
+				var layer = layui.layer;
+				//监听导航点击
+				element.on('nav(mainnav)', function(elem) {
+					layer.msg(elem.text());
+				});
+				$(document).ready(function() {
+					if (cookie.get("user_name") != null && cookie.get("user_name") != "") {
+						$("#current_user").html(cookie.get("user_name"));
+					}
+					
+					$("#login_out").on("click", function() {
+						cookie.deleteCookie("user_name");
+						window.location.href = "index";
+					});
+					
+					var id = layer.msg("数据加载中", {
+						icon: 16,
+						shade: 0.5,
+						time: false
+					});
+					get_yuqing_list(layer,id,0,1);
+					$(".select_area .layui-btn").on("click", function() {
+						console.log($(this).attr("expend"));
+						var expend = $(this).attr("expend");
+						var ul = $(this).next();
+						var drop_down = $(".drop_down");
+						drop_down.removeClass("drop_down");
+						drop_down.siblings(".layui-btn").attr("expend", "false");
+						if (expend == "false") {
+							ul.addClass("drop_down");
+							$(this).attr("expend", "true");
+						} else {
+							$(this).attr("expend", "false");
+						}
+					});
+					
+					$("#time_select ul li").on("click",function(){
+						$("#time_select button span").html($(this).text());
+						$("#time_select ul").removeClass("drop_down");
+						$("#time_select button").attr("expend", "false");
+						var id = layer.msg("数据加载中", {
+							icon: 16,
+							shade: 0.5,
+							time: false
+						});
+						get_yuqing_list(layer,id,0,1);
+					})
+					
+					$("#emotion_select ul li").on("click",function(){
+						$("#emotion_select button span").html($(this).text());
+						$("#emotion_select ul").removeClass("drop_down");
+						$("#emotion_select button").attr("expend", "false");
+						var id = layer.msg("数据加载中", {
+							icon: 16,
+							shade: 0.5,
+							time: false
+						});
+						get_yuqing_list(layer,id,0,1);
+					})
+					
+					$("#sort_select ul li").on("click",function(){
+						$("#sort_select button span").html($(this).text());
+						$("#sort_select ul").removeClass("drop_down");
+						$("#sort_select button").attr("expend", "false");
+						var id = layer.msg("数据加载中", {
+							icon: 16,
+							shade: 0.5,
+							time: false
+						});
+						get_yuqing_list(layer,id,0,1);
+					})
+					
+					$("#guanzhu").on("click",function(){
+						add_guanzhu();
+						layer.msg("关注");
+					})
+					
+					$("#quguan").on("click",function(){
+						cancel_guanzhu();
+						layer.msg("取关");
+					})
+
+				});
+
+
+			});
+		</script>
+	</body>
+</html>

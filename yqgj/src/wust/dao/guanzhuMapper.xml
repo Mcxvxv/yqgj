@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="wust.dao.GuanzhuDao">
+	<select id="query_guanzhu_by_UK" parameterType="map" resultType="map">
+		select * from ${table} where user_id=#{user_id} and keyword=#{keyword};
+	</select>
+	
+	<insert id="insert_guanzhu" parameterType="map">
+		insert into ${table}(
+					user_id,
+					keyword
+		)values(
+					#{user_id},
+					#{keyword}
+		)	
+	</insert>
+	
+	<delete id="delete_guanzhu" parameterType="map">
+		delete from ${table} where user_id=#{user_id} and keyword=#{keyword};
+	</delete>
+	
+	<select id="query_guanzhu_byid" parameterType="map" resultType="map">
+		select * from ${table} where user_id=#{user_id};
+	</select>
+	
+
+	
+</mapper>

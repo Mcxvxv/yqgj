@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title>首页</title>
+		<link rel="stylesheet" href="layui/css/layui.css">
+		<link rel="stylesheet" href="css/home_2.0.css">
+		<link rel="stylesheet" href="css/common.css">
+		
+		<script type="text/javascript" src="js/jquery-3.4.1.min.js" charset="UTF-8"></script>
+		<script type="text/javascript" src="layui/layui.js" charset="utf-8"></script>
+		<script type="text/javascript" src="js/echarts.js" charset="utf-8"></script>
+		<script type="text/javascript" src="js/home.js" charset="UTF-8"></script>
+		<script type="text/javascript" src="js/cookie.js" charset="UTF-8"></script>
+		<script>
+			if (cookie.get("user_name") == null || cookie.get("user_name") == "") {
+				console.log("没有用户");
+				window.location.href = "index";
+			}
+		</script>
+	</head>
+	<body>
+		<div>
+			<div class="header">
+				<ul class="layui-nav" lay-filter="mainnav">
+					<li class="layui-nav-item layui-this">
+						<a href="javascript:void(0)">首页</a>
+					</li>
+					<li class="layui-nav-item">
+						<a href="all">舆情总览</a>
+					</li>
+					<li class="layui-nav-item">
+						<a href="zhuanti">专题预警</a>
+					</li>
+					<li class="layui-nav-item">
+						<a href="school">高校推送</a>
+					</li>
+					<li class="layui-nav-item">
+						<a href="concern">我的关注</a>
+					</li>
+					<li class="layui-nav-item">
+						<a href="analyze">统计分析</a>
+					</li>
+					<li class="layui-nav-item">
+						<a href="javascript:;"><img src="//t.cn/RCzsdCq" class="layui-nav-img"><span id="current_user">我</span></a>
+						<dl class="layui-nav-child">
+							<dd><a href="javascript:;" id="update_userinfo">修改信息</a></dd>
+							<dd><a href="javascript:;">安全管理</a></dd>
+							<dd><a href="javascript:;" id="login_out">退了</a></dd>
+						</dl>
+					</li>
+				</ul>
+			</div>
+			<div class="all_content">
+				<div class="top_content">
+					<div class="quality_table_area">
+						<div class="table_title">
+							<img src="img/icon/pie.png" />
+							<span>今日舆情性质总览</span>
+						</div>
+						<div class="quality_table" id="quality_table"></div>
+					</div>
+					<div class="source_table_area">
+						<div class="table_title">
+							<img src="img/icon/pie.png" />
+							<span>今日舆情来源</span>
+						</div>
+						<div class="source_content">
+							<div class="source_table" id="source_table"></div>
+						</div>
+					</div>
+					<div class="source_detail_area">
+						<div class="table_title">
+							<div class="color_area">
+								<div>
+									<img src="img/icon/color_black.png" />
+									<span>负面</span>
+								</div>
+								<div>
+									<img src="img/icon/color_blue.png" />
+									<span>总数</span>
+								</div>
+							</div>
+						</div>
+						<div class="source_content">
+							<div class="source_detail">
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="bottom_content">
+					<div class="yujing wrapper">
+						<div class="table_title">
+							<img src="img/icon/yujing.png" />
+							<span>舆情预警</span>
+						</div>
+						<div class="yujing content">
+
+						</div>
+					</div>
+					<div class="zuixin wrapper">
+						<div class="table_title">
+							<img src="img/icon/zuixin.png" />
+							<span>高校最新</span>
+						</div>
+						<div class="zuixin content">
+
+						</div>
+					</div>
+					<div class="gaunzhu wrapper">
+						<div class="table_title">
+							<img src="img/icon/xuexiao.png" />
+							<span>关注高校</span>
+						</div>
+						<div class="guanzhu content">
+							<div class="kongbai_area">
+								<img src="img/icon/kongbai.PNG" />
+								<button type="button" class="layui-btn layui-btn-normal" id="add_school_button">
+									<i class="layui-icon">&#xe608;</i> 
+									<span>添加关注高校</span>
+								</button>	
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+			<div class="footer">
+
+			</div>
+		</div>
+		<script>
+			layui.use(['layer', 'element'], function() {
+				var element = layui.element; //导航的hover效果、二级菜单等功能，需要依赖element模块
+				var layer = layui.layer;
+				//监听导航点击
+				element.on('nav(mainnav)', function(elem) {
+					layer.msg(elem.text());
+				});
+				$(document).ready(function() {
+					if (cookie.get("user_name") != null && cookie.get("user_name") != "") {
+						$("#current_user").html(cookie.get("user_name"));
+					}
+					
+					$("#login_out").on("click", function() {
+						cookie.deleteCookie("user_name");
+						window.location.href = "index";
+					});
+					
+					$("#add_school_button").on("click",function(){
+						window.location.href = "concern";
+					});
+
+
+					var id = layer.msg("数据加载中", {
+						icon: 16,
+						shade: 0.5,
+						time: false
+					});
+					load_data(layer, id);
+				});
+			});
+		</script>
+	</body>
+</html>
